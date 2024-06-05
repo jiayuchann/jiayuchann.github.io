@@ -1,4 +1,4 @@
-## DamCTF-take-a-look
+## DamCTF take-a-look
 
 This challenge is kind of like a mix of rev and forensics, and I spent at least 10 hours looking at the Bee movie script. Kudos to the challenge writer.
 
