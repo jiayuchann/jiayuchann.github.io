@@ -18,9 +18,7 @@ email: "jiayuchan91@gmail.com"
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
-remote_theme: jekyll/minima
-minima:
-  skin: dark
+theme: "minima"
 
 rss: rss
 
@@ -31,7 +29,6 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-remote-theme
 
 titles_from_headings:
   strip_title: true
