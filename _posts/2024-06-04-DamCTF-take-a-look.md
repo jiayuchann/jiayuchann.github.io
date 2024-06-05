@@ -30,7 +30,7 @@ My attempt at deobfuscation:
 
 The rest of the script is just encrypting the contents of `.\book\0.txt` with AES, set up using the key and IV, then outputting it to a file, but in this case, 21 fragmented files.
 
-Since the IV is known, to break the encryption we just have to brute force for 4 letters. I wrote a script for this:
+Since the IV is known, to break the encryption we just have to brute force for 4 letters. I wrote a script to brute force and check whether the attempted decryption output is printable. And ran it on the file `0.enc`.
 
 ```python
 import itertools
@@ -74,5 +74,43 @@ for combo in combinations:
             exit()
 ```
 
-Here I am assuming that the decrypted contents are printable.
+Key found: jwCUjwCUjwCUjwCUjwCUjwCUjwCUjwCU
 
+And we are presented with the first part of Bee movie script.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/7d6b24df-833e-4dec-99b8-f5941176c215)
+
+Decrypting `cipher_no_ciphering` gives us what looks like a list of indices
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/a78f42d2-a5e8-4e8b-8730-35b738a30610)
+
+This is where I got stuck, and spent hours trying out different strategies and looking at the movie script for hours.
+
+After the event ended, apparently it was a book cipher: https://en.wikipedia.org/wiki/Book_cipher, and `17.enc` contained the flag.
+Each element of the key is used to point to a position within the file (8 = 8th character, 2 = 2nd character), but we are ignoring spaces and newline characters in the file.
+
+This is the official solver script for the final stage (modified to print l):
+
+```python
+cipher = [8, 2, 29, 12, 673, 19, 6, 124, 464, 2, 14, 211, 13, 19, 20, 87, 90, 1, 19, 20, 27, 110, 20, 7, 6, 211, 126]
+        
+l = list()
+with open('17_decrypted','r') as file:
+    data = file.read()
+    print(file.name)
+    
+for y in data:
+    if y != " " and y != "" and y != '\n':
+        l.append(y)
+
+print(l)
+for z in cipher:
+    print(l[z], end ="")
+print('\n')
+```
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/f032a306-885d-4e3b-be6d-dc8246cbcd81)
+
+And we can use the list of indices to point to each character of the flag and concatenate them together.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/97cafc6b-9616-4a8a-990b-4f28129bff87)
