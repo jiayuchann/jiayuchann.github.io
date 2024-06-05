@@ -80,7 +80,8 @@ And we are presented with the first part of Bee movie script.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/7d6b24df-833e-4dec-99b8-f5941176c215)
 
-Decrypting `cipher_no_ciphering` gives us what looks like a list of indices
+Decrypting `cipher_no_ciphering` gives us what looks like a list of indices:
+`8 2 29 12 673 19 6 124 464 2 14 211 13 19 20 87 90 1 19 20 27 110 20 7 6 211 126`
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/a78f42d2-a5e8-4e8b-8730-35b738a30610)
 
