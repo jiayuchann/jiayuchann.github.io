@@ -74,7 +74,7 @@ for combo in combinations:
             exit()
 ```
 
-Key found: jwCUjwCUjwCUjwCUjwCUjwCUjwCUjwCU
+Key found: `jwCUjwCUjwCUjwCUjwCUjwCUjwCUjwCU`
 
 And we are presented with the first part of Bee movie script.
 
@@ -85,12 +85,12 @@ Decrypting `cipher_no_ciphering` gives us what looks like a list of indices:
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/a78f42d2-a5e8-4e8b-8730-35b738a30610)
 
-This is where I got stuck, and spent hours trying out different strategies and looking at the movie script for hours.
+This is where I got stuck, tried out different strategies and ended up looking at the movie script for hours.
 
-After the event ended, apparently it was a book cipher: https://en.wikipedia.org/wiki/Book_cipher, and `17.enc` contained the flag.
-Each element of the key is used to point to a position within the file (8 = 8th character, 2 = 2nd character because we count from 0), but we are ignoring spaces and newline characters in the file.
+After the event ended, apparently it was a book cipher: https://en.wikipedia.org/wiki/Book_cipher, hence the reference to the phrase `book` in the .ps1 script, and `17.enc` contained the flag.
+Each element of the key is used to point to a position within the file (idx 8 = 9th character, idx 2 = 3rd character because we count from 0), but we are ignoring spaces and newline characters in the file.
 
-This is the official solver script for the final stage (modified to print l):
+This is a modified version of the official solver script for the final stage
 
 ```python
 cipher = [8, 2, 29, 12, 673, 19, 6, 124, 464, 2, 14, 211, 13, 19, 20, 87, 90, 1, 19, 20, 27, 110, 20, 7, 6, 211, 126]
