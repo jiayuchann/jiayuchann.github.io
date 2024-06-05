@@ -87,7 +87,7 @@ Decrypting `cipher_no_ciphering` gives us what looks like a list of indices
 This is where I got stuck, and spent hours trying out different strategies and looking at the movie script for hours.
 
 After the event ended, apparently it was a book cipher: https://en.wikipedia.org/wiki/Book_cipher, and `17.enc` contained the flag.
-Each element of the key is used to point to a position within the file (8 = 8th character, 2 = 2nd character), but we are ignoring spaces and newline characters in the file.
+Each element of the key is used to point to a position within the file (8 = 8th character, 2 = 2nd character because we count from 0), but we are ignoring spaces and newline characters in the file.
 
 This is the official solver script for the final stage (modified to print l):
 
