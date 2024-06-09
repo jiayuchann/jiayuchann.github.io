@@ -31,7 +31,13 @@ Here, we have a loop which pretty much just checks whether all files `data0` to 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/dd44e4ce-677c-461d-8823-312a54d28e52)
 
-In the main section of the function, there is a do while loop, which loops through all 7 data files. 
+Here's what the struct looks like:
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/42caeb0f-a7ca-4f16-9d4b-11712770f6b4)
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/a9f8398c-87c1-41a1-a70d-9f85490b1a03)
+
+In the main section of `interesting_function`, there is a do while loop, which loops through all 7 data files. 
 
 For each data file, the thread first seeks to the beginning of the file `0x74 * v15`(v15 is 0 before the loop), and reads 0x74 bytes from that location, storing it in `buf`. `v12` is calculated through `v12 = input->input_index[5 * file_counter + i];`, and then used as an index within `buf` to get the value of `v15` for the next loop. Remember that `v15`is used for the offset within the file. This continues 5 times in total, then the final value of `v15` is checked against `\x00tac`(cat in reverse because little-endian).  If it matches, we get the first 5 characters of the flag. Because the inner for loop runs 5 times and counter `i` is used for indexing our transformed user input (user input translated into index within the defined charset in `sub_1225`).
 
