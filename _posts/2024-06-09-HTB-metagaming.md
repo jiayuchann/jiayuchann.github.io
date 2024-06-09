@@ -4,7 +4,7 @@ This is a hard VM challenge, but instead of manually reversing the math operatio
 
 main.cpp was provided, and in `main`, we see a `program_t` template instantiated with `flag` being the first parameter (that we have to figure out 40 bytes for) and a bunch of `insn_t` type instances following. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/8dc5637f-af9f-4308-8733-829dfd5d92e6)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/b6c89908-7c7e-4f52-bc09-a97bd4fc1d58)
 
 We can confirm that the `insn_t` type represents an instruction, and takes 3 integers as parameters, an opcode and 2 operands.
 
