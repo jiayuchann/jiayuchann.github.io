@@ -186,6 +186,6 @@ For execution of instructions, they are just tuples, each representing a single 
 
 After applying all the instructions, I added constraints to the solver for the expected final values of the registers. Z3 is then asked to solve these constraints, attempting to find values for the `Flag` array. If a solution satisfies all constraints, we can then extract the input value that gave us the solution.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/7cfffa89-5e8f-4391-aa23-a972955728bd)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9b6eb88c-a5e7-454b-ac92-164ea0f1cc27)
 
 `HTB{m4n_1_l0v4_cXX_TeMpl4t35_9fb60c17b0}`
