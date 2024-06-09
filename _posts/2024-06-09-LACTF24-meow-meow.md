@@ -14,22 +14,22 @@ In main, it first prompts us for an input, and then checks whether our input len
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/70062db9-dcbd-4006-b609-91b704c54b01)
 
-Once we pass the check, each byte of our input is passed into sub_1225.
+Once we pass the check, each byte of our input is passed into `sub_1225`.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/91dffd2d-6b48-4e34-9660-45567d1347d9)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/d0e166b4-2c53-42e6-bea8-79bc6b2dc57b)
 
 Looking at `sub_1225`, it first checks if the character is a lowercase, if not, convert it from uppercase to lowercase. It also maps the ‘_’, ‘{’, and ‘}’ symbols to 0x1A, 0x1B and 0x1C respectively.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ae221afc-187c-4db7-914a-746f661fe688)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/34e8cd98-6a3e-405b-99bc-d89ff55423bf)
 
 Here, `__ctype_b_loc()` contains character classification data used by the `ctype.h` functions. The array contains integers, each corresponding to a different character of the unsigned char type. Each integer's bits represent different character properties. `(*__ctype_b_loc())` dereferences this pointer to give us the actual array. `[a1]`then accesses the array at the position `a1`, which is our character. This returns the classification data (an integer) for the character.
 The & 0x200 operation is related to the character classification function `islower`. A table for the flag to function mapping is shown below.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3d203243-0c35-48f2-9419-667b539ac969)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/b9684b61-af5a-4360-83a0-37a104f2d83c)
 
 Here, we have a loop which pretty much just checks whether all files `data0` to `data7` are present and accessible. If they are the program then runs several threads on a function I renamed as `interesting_function`, with our input in index form as the argument `v34`, where I created a struct for it.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/dd44e4ce-677c-461d-8823-312a54d28e52)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/22536133-04f5-428c-afb7-10067ec3d9b5)
 
 Here's what the struct looks like:
 
@@ -81,8 +81,8 @@ while(1):
 os.close(fd)
 ```
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/eef44cdd-c5a5-4f1f-ba99-860e44cd27a0)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/32f05f79-ac2b-4b51-8bf7-bf0d65c2aea7)
 
 Well, seems like the flag order is not based on file numbering, but we can still construct it nonetheless.
 
-`lactf{meow_you_found_me_epcsihnxos} `
+`lactf{meow_you_found_me_epcsihnxos}`
