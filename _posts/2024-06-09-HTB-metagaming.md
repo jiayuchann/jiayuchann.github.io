@@ -8,7 +8,7 @@ main.cpp was provided, and in `main`, we see a `program_t` template instantiated
 
 We can confirm that the `insn_t` type represents an instruction, and takes 3 integers as parameters, an opcode and 2 operands.
 
-```
+```cpp
 struct insn_t {
     uint32_t opcode = 0;
     uint32_t op0 = 0;
@@ -18,7 +18,7 @@ struct insn_t {
 
 Under the `program_t` struct, this is where the operations are defined:
 
-```
+```cpp
 template<insn_t Insn>
 static constexpr void execute_one(R &regs) {
     if constexpr (Insn.opcode == 0) {
@@ -82,7 +82,7 @@ static constexpr void execute_one(R &regs) {
 
 There are 15 registers in total. Towards the end of the main function, there is a check on each registers’ state such that when `program` finishes running with the correct flag, all registers should reflect those values. In other words, if all registers reflect those values given our input, our input must be the flag.
 
-```
+```cpp
 static_assert(program::registers[0] == 0x3ee88722 && program::registers[1] == 0xecbdbe2 && program::registers[2] == 0x60b843c4 && program::registers[3] == 0x5da67c7 && program::registers[4] == 0x171ef1e9 && program::registers[5] == 0x52d5b3f7 && program::registers[6] == 0x3ae718c0 && program::registers[7] == 0x8b4aacc2 && program::registers[8] == 0xe5cf78dd && program::registers[9] == 0x4a848edf && program::registers[10] == 0x8f && program::registers[11] == 0x4180000 && program::registers[12] == 0x0 && program::registers[13] == 0xd && program::registers[14] == 0x0, "Ah! Your flag is invalid.");
 ```
 
@@ -90,7 +90,7 @@ Technically we can work backwards from the last instruction and the final regist
 
 But, if you’re using symbolic execution tools, you don’t have to worry about this. 
 
-```
+```python
 from z3 import *
 
 s = Solver()
