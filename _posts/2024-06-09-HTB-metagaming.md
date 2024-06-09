@@ -1,4 +1,4 @@
-##HTB Cyber Apocalypse CTF 2024 – Metagaming (Z3 tutorial)
+## HTB Cyber Apocalypse CTF 2024 – Metagaming (Z3 tutorial)
 
 This is a hard VM challenge, but instead of manually reversing the math operations, I used Z3, a really powerful theorem prover by Microsoft for symbolic execution!
 
