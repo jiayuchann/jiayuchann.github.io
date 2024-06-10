@@ -2,7 +2,7 @@
 
 Pretty fun challenges I did last weekend. Here's some writeups for some of them.
 
-# [forensics/flagserver](#forensicsflagserver)
+##### [forensics/flagserver](#forensicsflagserver)
 
 ## forensics/flagserver
 
