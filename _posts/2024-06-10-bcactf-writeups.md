@@ -35,7 +35,7 @@ Extraction of server stream:
 
 When the client sent the object, the server responded with a serialized object as well, containing a fake flag. The trick is that the server is hosting 2 flags, and we can craft the serialized object ourselves and send it to the server but changing the value of `chall` to `flagserver` to access the actual flag.
 
-In Java, I made a class ` MessageCtoS_Request` which implements the Serializable class, with attributes `serialVersionUID`and `chall`. 
+In Java, I made a class `MessageCtoS_Request` which implements the Serializable class, with attributes `serialVersionUID` and `chall`. 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/8cc71ddf-7c7b-4d93-bae9-4dfeffc92054)
 
