@@ -3,6 +3,12 @@
 Pretty fun challenges I did last weekend. Here's some writeups for some of them.
 
 ##### [forensics/flagserver](#forensicsflagserver)
+##### [forensics/magic](#forensicsmagic)
+##### [forensics/manipulate spreadsheet 2](#forensicsmanipulate-spreadsheet-2)
+##### [forensics/wiretapped](#forensicswiretapped)
+##### [rev/fps frenzy](#revfps-frenzy)
+##### [rev/broken c code](#revbroken-c-code)
+##### [web/moc, inc.](#webmoc-inc)
 
 ## forensics/flagserver
 
