@@ -2,7 +2,7 @@
 
 Pretty fun challenges I did last weekend. Here's some writeups for some of them.
 
-### forensics/flagserver
+## forensics/flagserver
 
 Description: It looks like Ircus have been using a fully exposed application to access their flags! Look at this traffic I captured. I can't seem to get it to work, though... can you help me get the flag for this very challenge?
 
@@ -27,7 +27,7 @@ Extraction of client stream:
 
 The class being serialized is `flagserver.MessageCtoS_Request`, with a version identifier of `0xbd164155d760d5a3`. It also implements a the `Serializable` interface. 
 
-Only 1 field is serialized within this class, `chall` which if of type ` Ljava/lang/String;`, and it has the value `fakechall`
+Only 1 field is serialized within this class, `chall` which if of type `Ljava/lang/String;`, and it has the value `fakechall`.
 
 Extraction of server stream:
 
@@ -47,7 +47,7 @@ I didn’t really parse the server’s output, I just dumped it.
 
 `bcactf{thankS_5OCK3ts_and_tHreADInG_clA5s_2f6fb44c998fd8}`
 
-### forensics/magic
+## forensics/magic
 
 Description: I found this piece of paper on the floor. I was going to throw it away, but it somehow screamed at me while I was holding it?!
 
@@ -69,7 +69,7 @@ Looks like a simple XOR.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/822f3028-b8dd-4ace-a912-b98fdb7c47bf)
 
-Our input is XORed with the value of `info.producer` mod (0x75 + counter). `info.producer` can be found in the PDF file metadata and it has the value ` 283548893274 `. Since XOR is reversible and we have the final array `k`, we can just XOR each element of `k` with `info.producer` mod (0x75 + counter).
+Our input is XORed with the value of `info.producer` mod (0x75 + counter). `info.producer` can be found in the PDF file metadata and it has the value `283548893274`. Since XOR is reversible and we have the final array `k`, we can just XOR each element of `k` with `info.producer` mod (0x75 + counter).
 
 ```python
 def reconstruct_input(k, producer):
@@ -90,7 +90,7 @@ print(original_input)
 
 `bcactf{InTerACtIv3_PdFs_W0W_cbd14436e6aea8}`
 
-### forensics/manipulate spreadsheet 2
+## forensics/manipulate spreadsheet 2
 
 Description: Sequel to a challenge from BCACTF 4. The flag lies within: https://docs.google.com/spreadsheets/d/1kGrbQpZ4oUt0ChKvwGa4PDJQ1QvUl73Qpeo585vQ6s4/edit?usp=sharing
 
@@ -179,7 +179,7 @@ print(ascii_output)
 
 `bcactf{600D_job_Using_900G13_SHe3t5}`
 
-### forensics/wiretapped
+## forensics/wiretapped
 
 Description: I've been listening to this cable between two computers, but I feel like it's in the wrong format.
 
@@ -207,7 +207,7 @@ Opening the image gives us the second half of the flag!
 
 `bcactf{listening_in_a28270fb0dbfd}`
 
-### rev/fps frenzy
+## rev/fps frenzy
 
 Pretty cool game.
 
@@ -238,7 +238,7 @@ Compile and save the modified DLL, and profit!
 
 `bcactf{7H3_14w_of_c0S1nEs_4b723470334e}`
 
-### rev/ broken c code
+## rev/broken c code
 
 Description: Help! I was trying to make a flag printer but my C code just prints random garbage and I can't figure out why! Can you help me?
 
@@ -254,7 +254,7 @@ Contents of `unk_400800`:
 
 Performing square root on the first integer 0x2587 – 3 gives us 0x62, which is `b` in ASCII, first character of the flag format. Sqrt(0x9801 - 3) gives us 0x63, ‘c’, which is the second character of the flag format. Looks like `v3 = i++` is unnecessary since it is skipping characters. We can just patch the binary. 
 
-In Binary Ninja, we can patch `lea edx, [rax+0x1]` at address ` 0x400681` to `lea edx, [rax]`.
+In Binary Ninja, we can patch `lea edx, [rax+0x1]` at address `0x400681` to `lea edx, [rax]`.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/216a2fb0-dc38-4011-9571-efabf5cb3a3d)
 
@@ -262,7 +262,7 @@ In Binary Ninja, we can patch `lea edx, [rax+0x1]` at address ` 0x400681` to `le
 
 `bcactf{c_c0dE_fIXeD_7H4NK5_762478276}`
 
-### web/moc, inc.
+## web/moc, inc.
 
 Description: Towards the end of last month, we started receiving reports about suspicious activity coming from a company called MOC, Inc. Our investigative team has tracked down their secret company portal and cracked the credentials to the admin account, but could not bypass the advanced 2FA system. Can you find your way in?
 username: admin
@@ -276,7 +276,7 @@ Snippet of how the 2FA code is generated for each user:
 
 Apparently, the 2FA code `totp_secret` is set at the time when the user information is inserted into the database and stays static. 
 
-The PRNG is also seeded via ` random.seed(datetime.datetime.today().strftime('%Y-%m-%d'))`, using the exact date of the time of the inserting the entry into the database. 
+The PRNG is also seeded via `random.seed(datetime.datetime.today().strftime('%Y-%m-%d'))`, using the exact date of the time of the inserting the entry into the database. 
 
 The chal author provided a hint, that the admin user was created some time during May 2024. So, there are only 31 possible values we have to brute force, through seeding the PRNG with each of the dates and getting the first result from the PRNG, sending it to the server and inspecting the response. Here, I am assuming that the admin is the first user inserted into the database for any particular dates.
 
