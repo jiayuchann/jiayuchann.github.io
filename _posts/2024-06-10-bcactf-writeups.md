@@ -2,6 +2,8 @@
 
 Pretty fun challenges I did last weekend. Here's some writeups for some of them.
 
+# [forensics/flagserver](#forensicsflagserver)
+
 ## forensics/flagserver
 
 Description: It looks like Ircus have been using a fully exposed application to access their flags! Look at this traffic I captured. I can't seem to get it to work, though... can you help me get the flag for this very challenge?
