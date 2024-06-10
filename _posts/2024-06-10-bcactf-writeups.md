@@ -260,7 +260,7 @@ Contents of `unk_400800`:
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/2a17585c-f61e-4e7f-84bf-323c8e224120)
 
-Performing square root on the first integer 0x2587 – 3 gives us 0x62, which is `b` in ASCII, first character of the flag format. Sqrt(0x9801 - 3) gives us 0x63, ‘c’, which is the second character of the flag format. Looks like `v3 = i++` is unnecessary since it is skipping characters. We can just patch the binary. 
+Performing square root on the first integer 0x2587 – 3 gives us 0x62, which is `b` in ASCII, first character of the flag format. Sqrt(0x9801 - 3) gives us 0x63, `c`, which is the second character of the flag format. Looks like `v3 = i++` is unnecessary since it is skipping characters. We can just patch the binary. 
 
 In Binary Ninja, we can patch `lea edx, [rax+0x1]` at address `0x400681` to `lea edx, [rax]`.
 
