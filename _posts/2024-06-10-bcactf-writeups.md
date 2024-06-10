@@ -55,7 +55,7 @@ I didn’t really parse the server’s output, I just dumped it.
 
 `bcactf{thankS_5OCK3ts_and_tHreADInG_clA5s_2f6fb44c998fd8}`
 
-## forensics/magic
+[anchor](## forensics/magic)
 
 Description: I found this piece of paper on the floor. I was going to throw it away, but it somehow screamed at me while I was holding it?!
 
