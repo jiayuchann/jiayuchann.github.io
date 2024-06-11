@@ -6,7 +6,7 @@ Pretty fun challenges I did last weekend. Here's some writeups for some of them.
 ##### [forensics/magic](#forensicsmagic-1)
 ##### [forensics/manipulate spreadsheet 2](#forensicsmanipulate-spreadsheet-2-1)
 ##### [forensics/wiretapped](#forensicswiretapped-1)
-##### [rev/crabby](#crabby-1)
+##### [rev/crabby](#revcrabby-1)
 ##### [rev/fps frenzy](#revfps-frenzy-1)
 ##### [rev/broken c code](#revbroken-c-code-1)
 ##### [web/moc, inc.](#webmoc-inc-1)
