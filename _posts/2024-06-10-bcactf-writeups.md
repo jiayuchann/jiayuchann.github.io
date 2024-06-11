@@ -242,7 +242,7 @@ It was a base64 encoded message `some_super_secret_key_text_here`.
 
 Towards the end of the `gpwd`, we see that it updates the argument to the function to point to the base64 encoded message before returning to a Tokio runtime subroutine.
 
-Then, it builds a `reqwest` client object, setting up a POST request to `http://localhost:7787/flag` , with the header set to `Authorization: null`, before sending it to the localhost service (at this point I don’t have a web service running locally), so running it resulted in connection refused error.
+Then, it builds a `reqwest` client object, setting up a POST request to `http://localhost:7787/flag`, and header set to `Authorization: null` through `RequestBuilder`, before sending it to the localhost service (at this point I don’t have a web service running locally), so running it resulted in connection refused error.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3789bc3e-ba0c-45af-9da9-057215b013cc)
 
