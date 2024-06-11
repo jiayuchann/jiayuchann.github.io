@@ -13,8 +13,8 @@ There are 3 available songs.
 Game is pretty straightforward, we control the character to catch falling fruits. I completed the first 2 levels with full combo.
 I tried to get full-combo on the 3rd song, but towards the middle of the song, the game becomes impossible to win.
 
-One thing we know is that the game is run using Unity Engine, which means the game is probably written in C#.
-C# compiles to an intermediate language, which is interpreted by an execution engine. We can use dnSpy to interpret the IL code and convert them to translate them back to C# code.
+One thing we know is that the game is run using Unity Engine, which means the game is probably scripted in C#.
+The C# code compiles to an intermediate language (CIL), if using the default Mono runtime, which is executed by the Mono interpreter when it's ran. Good thing is that CIL can be reversed back to its original source easily, and we can use dnSpy for this.
 
 Unity games usually compile all scripts into Assembly-CSharp.dll in the Managed folder within the game's data directory. I loaded this file using dnSpy.
 
