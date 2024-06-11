@@ -215,6 +215,42 @@ Opening the image gives us the second half of the flag!
 
 `bcactf{listening_in_a28270fb0dbfd}`
 
+## rev/crabby
+
+Description: I asked somebody to open source a specific project, but they're being very crabby about it. Instead, they sent me this binary and said "Everything is open source if you can read assembly".
+
+I can't read assembly, can you help me out?
+
+There is a webserver running on challs.bcactf.com:30439 and we’re given a Rust binary.
+
+Rust uses the Tokio runtime, which handles task scheduling, I/O events, and inter-task communication. Tasks can be seen as threads, but we don’t have to sift through all these runtime stuff to get to the user code.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/7dffb994-4311-4156-9978-e505269fc532)
+
+Under the user-defined `crabby` module, there is a `gpwd` sub-module.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/32a84f3c-ac3a-494b-aa07-348309649e68)
+
+It looks like it is searching for a string and I confirmed that it was copying the address pointing to data `99 50 57 116 90 86 57 122 100 88 66 108 99 108 57 122 90 87 78 121 90 88 82 102 97 50 86 53 88 51 82 108 101 72 82 102 97 71 86 121 90 81 61 61` into `buf`.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/04dfece7-f2d6-4c0b-bb58-1cbc2c4e059b)
+
+It was a base64 encoded message `some_super_secret_key_text_here`.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/152efc3c-99cf-413d-8863-79ce97a38922)
+
+Towards the end of the `gpwd`, we see that it updates the argument to the function to point to the base64 encoded message before returning to a Tokio runtime subroutine.
+
+Then, it builds a `reqwest` client object, setting up a POST request to `http://localhost:7787/flag` , with the header set to `Authorization: null`, before sending it to the localhost service (at this point I don’t have a web service running locally), so running it resulted in connection refused error.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3789bc3e-ba0c-45af-9da9-057215b013cc)
+
+When we craft the same request to the server with `Authorization: null`, we get an Unauthorized message. So, I tried setting the authorization token with `c29tZV9zdXBlcl9zZWNyZXRfa2V5X3RleHRfaGVyZQ==`, along with some junk bytes in the body, and there’s the flag!
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3c59b3cc-8bc7-4673-b540-95f810fe8230)
+
+`bcactf{h0W_Ru$7ic_f5ui3roifj354uybr823}`
+
 ## rev/fps frenzy
 
 Pretty cool game.
