@@ -14,7 +14,7 @@ There’s a bunch of garbled strings and it is also packed, typical for installe
 
 I read up on [eSentire’s Case Study](https://www.esentire.com/blog/esentire-threat-intelligence-malware-analysis-redline-stealer), and the initial loader for Redline are known to take form of fake installers like TeamViewer, AnyDesk, etc. A similar variant’s infection chain looks like the following, so I tried to base my analysis around this:
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ec4c6c77-d971-4ca3-a550-bae3792918d6)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/a9c6f5b0-f192-4959-ab4b-562aea0c1849)
 
 In IDA, the main functionality of the program lies in `sub_4015A0`, which handles file creation, deletion, setting up uninstallers, inserting registry keys, creating directories, etc. There is an interesting `ShellExecuteW` API call with dynamically resolved strings, and when looking through Tiny Tracer logs, there was one call to this exact offset.
 
