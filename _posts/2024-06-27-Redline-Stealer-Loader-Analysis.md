@@ -20,7 +20,7 @@ In IDA, the main functionality of the program lies in `sub_4015A0`, which handle
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/8e0fc32a-a10a-481c-a513-d726df2fa6ac)
 
-Tiny Tracer ouptut seems to stop at `ShellExecuteW` also:
+Tiny Tracer output seems to halt at `ShellExecuteW` too:
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/cefd1e56-adae-4cd5-b9aa-fd9cf036248e)
 
