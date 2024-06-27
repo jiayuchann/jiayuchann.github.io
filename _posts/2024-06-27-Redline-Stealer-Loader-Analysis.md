@@ -66,11 +66,11 @@ After unmapping it in PE-bear, it looks like a .NET file, so opening it up in dn
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9805e5d4-3ac7-4cde-b8a3-5bf7591a0d9f)
 
-But how did the decryption happen of the payload happen? Going back to executing `Promptly.pif` (or AutoIt3.exe), there was a `VirtualAlloc` call and a decryption routine shellcode written to that memory at `0x112000`, so I enabled an memory breakpoint on that address to catch the execution of that stub.
+But how did the decryption happen of the payload happen? Going back to executing `Promptly.pif` (or AutoIt3.exe), there was a `VirtualAlloc` call and a decryption routine shellcode written to that memory at `0x112000`, so I enabled a memory breakpoint on that address to catch the execution of that stub.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/79705fed-7511-4cbf-b9ac-6c6670464bd8)
 
-Dumping the shellcode and opening it in IDA, we can see 2 functionalities related to the RC4 initialization stage in `sub_2` and the XOR stage in `sub_93`. (learned this from Zero2Automated lol)
+Dumping the shellcode and opening it in IDA, we can see 2 functionalities related to RC4, the initialization stage in `sub_2` and the XOR stage in `sub_93`. (learned this from Zero2Automated lol)
 
 `sub_2`:
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ce203bc6-7a4f-4cfa-b09e-4bfb919241ca)
@@ -78,7 +78,7 @@ Dumping the shellcode and opening it in IDA, we can see 2 functionalities relate
 `sub_93`:
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/f6125b26-114e-4651-98b1-f3c1c8fa1d4a)
 
-Looking back at the arguments being passed into sub_2, the RC4 key is `8518543726503553863083291645022577371`.
+Looking back at the arguments being passed into `sub_2`, the RC4 key is `8518543726503553863083291645022577371`.
 
 Setting another breakpoint at the end of the decryption routine, we can see the encrypted blob that was decrypted at the same address `0x4790048` (this was on a second run because I messed up the first run).
 
