@@ -4,7 +4,7 @@ Came across a sample from Malware Bazaar.
 
 SHA256: 292a43281a8146f248fb71d92e5e32597c587fe003ac3a2f3ac8227331062120
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0e2605c6-3811-44e3-b9da-15b898626024)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/be015d35-f30c-46f6-bc13-a0d0e9bd6a8b)
 
 Detect It Easy recognized the exe file as an Installer, also there were some mentions of Autoit on VirusTotal.
 
@@ -18,7 +18,7 @@ I read up on [eSentire’s Case Study](https://www.esentire.com/blog/esentire-th
 
 In IDA, the main functionality of the program lies in `sub_4015A0`, which handles file creation, deletion, setting up uninstallers, inserting registry keys, creating directories, etc. There is an interesting `ShellExecuteW` API call with dynamically resolved strings, and when looking through Tiny Tracer logs, there was one call to this exact offset.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/64279dc5-9de9-404e-8c8e-16a94806680b)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/8e0fc32a-a10a-481c-a513-d726df2fa6ac)
 
 Tiny Tracer ouptut seems to stop at `ShellExecuteW` also:
 
@@ -30,7 +30,7 @@ I couldn’t find any other process related APIs being used, so decided to see w
 
 `Wrist.cmd` is an obfuscated batch script.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/2503a94f-7e67-41b7-9b4c-0e126d2443f5)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/78fb7904-9449-4408-bb74-13801ae5b03b)
 
 After deobfuscating, we get:
 
@@ -48,17 +48,17 @@ start /I %Attend%\%oobjxQdyOhgEZ% %Attend%\%oobjxQdyOhgEZ%U%MXpzMKVMvPYNjICbYkFd
 timeout 5
 ```
 
-This checks for processes `wrsa.exe` and `opssvc.exe`, if found, ping the localhost 196 times. It also checks for antivirus services on the system `avastui.exe, avgui.exe, nswscsvc.exe sophoshealth.exe`, if found, ` oobjxQdyOhgEZ ` is set to `AutoIt3.exe` instead of `Promptly.pif`. It creates a directory named `802403`, and in there, constructs a file Promptly.pif or AutoIt3.exe using contents from different files i.e. Collected, Thomas, Mandate, …, and attempt to run it, passing in the file `802403\U` as an argument. 
+This checks for processes `wrsa.exe` and `opssvc.exe`, if found, ping the localhost 196 times. It also checks for antivirus services on the system `avastui.exe, avgui.exe, nswscsvc.exe sophoshealth.exe`, if found, `oobjxQdyOhgEZ` is set to `AutoIt3.exe` instead of `Promptly.pif`. It creates a directory named `802403`, and in there, constructs a file Promptly.pif or AutoIt3.exe using contents from different files i.e. Collected, Thomas, Mandate, …, and attempt to run it, passing in the file `802403\U` as an argument. 
 
 During the execution of the initial installer, we can see that it drops the fragmented AutoIt3.exe files into the Temp directory. Here’s one of the fragments being created, seen in Tiny Tracer:
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/033f61b8-f7d2-474c-a4d4-4796ad5efd67)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/6e096cc9-845d-45d8-9c1b-6243b8e52005)
 
 Anyways, this seems like a legitimate AutoIt3 interpreter based on VirusTotal reports. However, the payload in `802403\U` looks encrypted. After some research, the last stage typically involves some sort of injection technique and after some tinkering and setting breakpoints on `CreateProcess`, `OpenProcess`and `NtResumeThread`, etc. what happens is the AutoIt3 interpreter decrypts the payload in memory and does process hollowing on `RegAsm.exe`.  And its parent process is `explorer.exe`, weird. I suspended the process quickly after the payload is injected and used pe-sieve to dump out suspicious memory regions. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/699e279d-b415-491c-b969-46496edc2d32)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/cd0395ac-84a9-494a-8efb-543cde124c26)
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/22b2dfbd-9d74-4438-8803-08dac6232422)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ca08fb7d-b7bc-490e-b79a-dee6630ec7cc)
 
 The memory region at `0xdb0000` seems promising. 
 
