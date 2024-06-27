@@ -84,6 +84,6 @@ Setting another breakpoint at the end of the decryption routine, we can see the 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/5a4a6ed0-82eb-46bc-a636-cc29b17f22db)
 
-But this PE file looks slightly different than the one I dumped previously. But thanks to a blog post from c3rb3ru5d3d53c, turns out it’s just compressed, and will be decompressed later and injected into a process, in my case `RegAsm.exe`.  Technically, I should run API monitor and track whichever API call was used for decompression and injection techniques, but I’m kinda lazy. But here’s a [list](https://github.com/cuckoosandbox/cuckoo/wiki/Hooked-APIs-and-Categories) of generic API calls you enable for monitoring.
+But this PE file looks slightly different than the one I dumped previously. But thanks to a blog post from c3rb3ru5d3d53c, turns out it’s just compressed, and will be decompressed later and injected into a process, in my case `RegAsm.exe`.  Technically, I should run API monitor and track whichever API call was used for decompression and injection techniques, but I’m kinda lazy. But here’s a [list](https://github.com/cuckoosandbox/cuckoo/wiki/Hooked-APIs-and-Categories) of generic API calls you can enable for monitoring.
 
 Anyways this is just a quick summary on how to get to the Redline code and demoing how the infection chain works !!
