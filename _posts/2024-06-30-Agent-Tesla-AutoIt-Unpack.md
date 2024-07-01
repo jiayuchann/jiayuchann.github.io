@@ -115,7 +115,7 @@ As you can see in the for loop, `sub_3560` calculates and returns the function a
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3540a72a-7678-4a6b-b193-71903a33108a)
 
-After resolving the functions and creating structs, it opens the `renowner` file in the Temp directory.
+After I created a struct for `v4` for the API addresses, looks like it opens the `renowner` file in the Temp directory.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/1e4c66c6-c7bc-4409-90ae-1e20e0a923a5)
 
