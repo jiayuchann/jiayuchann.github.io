@@ -99,11 +99,31 @@ Looks like the decoded text is still in hex representation. We can convert them 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/7b001c2e-4cbc-4df7-a2a2-64e64801d10d)
 
-Right away, there is a reference to the other file `renower`, which was dropped in the Temp directory. A constant `AIAHL068594BNNETB8SPTXO` that looks like a key is also copied into `v9`, and passed into `sub22E0`. `sub22E0` just looks like a simple XOR decryption loop. 
+Right away, there is a reference to the other file `renower`, which was dropped in the Temp directory. A constant that looks like a key `AIAHL068594BNNETB8SPTXO` is also copied into `v9`, which is passed into `sub22E0` later. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/89cd4ac7-4d10-43cb-87b0-ce68545e7250)
+There is also an API resolving routine before this, let’s try to examine what APIs are being used. In `sub_0`, we can see some dll_names being referenced:
 
-There are a bunch of API resolving routines before this, but we can just assume that the file `renowner` can be decrypted with the key. Sure enough, it’s another MZ file! DIE recognized it as a .NET file.
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0c8742c7-374e-42fa-8c7f-e32239430c03)
+
+Then, we can see some hashes being stored into a struct I labelled as `api_hashes`, and right after every hash, is where the actual function address of that hash is being stored in the struct. Luckily, hashdb recognizes the CRC checksums.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/63a3725c-dc43-455e-bf3e-715e1366ebc0)
+
+As you can see in the for loop, `sub_3560` calculates and returns the function addresses for each hash, and the result is stored right after the hash in the same `api_hashes` struct. The resolved addresses are then copied into `v4` back in `sub_23B0`.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3540a72a-7678-4a6b-b193-71903a33108a)
+
+After resolving the functions and creating structs, looks like it just opens the `renowner` file in the Temp directory.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/1e4c66c6-c7bc-4409-90ae-1e20e0a923a5)
+
+The file contents are read into buffer `v14`, and passed into `sub_22E0` with a key. 
+
+`sub_22E0` just looks like a simple XOR decryption loop. 
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/b41d0b34-bdf6-47d7-9eb3-50a1f4bb446e)
+
+We can try to decrypt the file with the key. Sure enough, another MZ file! DIE recognized it as a .NET file.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/4fcc56d8-8e90-4656-8da6-3bd1fdc160bb)
 
