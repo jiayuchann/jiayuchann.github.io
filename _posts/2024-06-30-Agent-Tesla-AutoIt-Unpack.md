@@ -20,9 +20,9 @@ Majority of the contents especially the for-loop constructs in the middle are du
 
 We can see 2 embedded files `renowner` and `palladize` are extracted and moved into the user’s Temp directory. 
 
-I opened them up in HXD, `palladize` looks weird, and `renowner` looks like encrypted.
+I opened them up in HXD, `palladize` looks weird, and `renowner` looks encrypted.
 
-There’s a few reference to the function `x30qqzpyj` which looks like it is being used for string decryption, since the return values are used as parameters to calls like `Execute`, `DllCall`, etc. 
+There’s a few reference to the function `x30qqzpyj` which seems like it is being used for string decryption, since the return values are being used as parameters to calls like `Execute`, `DllCall`, etc. 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/eac0cdb1-3b1c-4289-8ced-7c4f31990b96)
 
@@ -95,7 +95,7 @@ Here's what `palladize` looks like with the bytes at the beginning removed:
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/298bbbac-29ab-4295-a4d6-85d952f60889)
 
-Looks like the decoded text is still in hex representation. We can convert them into actual hex values first and then open it up in IDA. The entry point would be at offset `0x23B0`.
+The decoded text is still in hex representation. We can convert them into actual hex values first and then open it up in IDA. The entry point would be at offset `0x23B0`.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/7b001c2e-4cbc-4df7-a2a2-64e64801d10d)
 
@@ -115,13 +115,13 @@ As you can see in the for loop, `sub_3560` calculates and returns the function a
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3540a72a-7678-4a6b-b193-71903a33108a)
 
-After resolving the functions and creating structs, looks like it just opens the `renowner` file in the Temp directory.
+After resolving the functions and creating structs, it opens the `renowner` file in the Temp directory.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/1e4c66c6-c7bc-4409-90ae-1e20e0a923a5)
 
 The file contents are read into buffer `v14`, and passed into `sub_22E0` with a key. 
 
-`sub_22E0` just looks like a simple XOR decryption loop. 
+`sub_22E0` is just a simple XOR decryption loop. 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9a8b5f66-ba10-4989-8e4d-1b91249c32ef)
 
