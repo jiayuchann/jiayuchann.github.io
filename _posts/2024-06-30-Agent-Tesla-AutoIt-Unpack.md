@@ -10,13 +10,13 @@ SHA256: afec7242f5c41610ecb994d22fc8243a58866ed6c4c11a1544cca10019fe0a07
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/818c3004-a1bf-41b7-9bf2-6ac2ec4b8e42)
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0441a4af-9d33-4739-b074-52c1136c7520)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9d67b33a-a532-45f9-8671-22ea60c123b6)
 
 [Exe2Aut](https://exe2aut.com/exe2aut-converter/) is able to decompile this back into a .au3 file for easier analysis. But the script still looks highly obfuscated, with 2655 lines of code.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/1a770cc7-636d-43fe-8019-457ef68f2c32)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/5ed88ef4-49b5-4fa9-b63e-4d68603f2226)
 
-Majority of the contents especially the for-loop construts in the middle are dummy code. 
+Majority of the contents especially the for-loop constructs in the middle are dummy code. 
 
 We can see 2 embedded files `renowner` and `palladize` are extracted and moved into the user’s Temp directory. 
 
@@ -24,7 +24,7 @@ I opened them up in HXD, `palladize` looks weird, and `renowner` looks like encr
 
 There’s a few reference to the function `x30qqzpyj` which looks like it is being used for string decryption, since the return values are used as parameters to calls like `Execute`, `DllCall`, etc. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/33f46e0d-e2cd-42f0-8c78-59e795846bd1)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/776b2bba-54b4-4a90-b0d0-13cdec1cdb84)
 
 We can try to translate this function into Python, simulate and print out the results of the decryption for every call we see to it in the script:
 
@@ -97,15 +97,15 @@ Here's what `palladize` looks like with the bytes at the beginning removed:
 
 Looks like the decoded text is still in hex representation. We can convert them into actual hex values first and then open it up in IDA. The entry point would be at offset `0x23B0`.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/b6fe5545-8b25-4a61-bbe4-abc15bde457f)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/d436ca8f-c29f-4c15-a878-0d8944bd7131)
 
 Right away, there is a reference to the other file `renower`, which was dropped in the Temp directory. A constant that looks like a key is also copied into `v9`, and passed into `sub22E0`. `sub22E0` just looks like a simple XOR decryption loop. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/10a63792-7e4e-460d-a057-1bc5dd72b653)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/8236c587-4435-483d-90c2-4cb22006c379)
 
 There are a bunch of API resolving routines before this, but we can just assume that the file `renowner` can be decrypted with the key. Sure enough, it’s another MZ file! DIE recognized it as a .NET file.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/f03979a2-89e8-42c4-96ea-748df8254cb0)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9809e843-9379-4b0f-ac7c-fe58301379a5)
 
 Saving the file and opening up in dnSpy, we can see the code for Agent Tesla, some keylogging capabilities:
 
