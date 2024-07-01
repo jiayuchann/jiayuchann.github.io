@@ -101,7 +101,7 @@ Looks like the decoded text is still in hex representation. We can convert them 
 
 Right away, there is a reference to the other file `renower`, which was dropped in the Temp directory. A constant that looks like a key is also copied into `v9`, and passed into `sub22E0`. `sub22E0` just looks like a simple XOR decryption loop. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/acabdcc0-80b1-4edb-8af4-611a861cc255)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/10a63792-7e4e-460d-a057-1bc5dd72b653)
 
 There are a bunch of API resolving routines before this, but we can just assume that the file `renowner` can be decrypted with the key. Sure enough, it’s another MZ file! DIE recognized it as a .NET file.
 
