@@ -78,7 +78,7 @@ print(f"Parameters: {param1}, {param2} -> Result: {result}")
 
 Sweet! Now we can plug them into the .au3 script.
 
-```
+```au3
 FileInstall("renowner", @TempDir & "\renowner", 1)
 FileInstall("palladize", @TempDir & "\palladize", 1)
 Global $o30ytu4gil = Execute('FileRead(FileOpen(@TempDir  & "\palladize"))')
