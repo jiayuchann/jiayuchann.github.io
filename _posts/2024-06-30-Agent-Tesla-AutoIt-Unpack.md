@@ -78,7 +78,7 @@ print(f"Parameters: {param1}, {param2} -> Result: {result}")
 
 Sweet! Now we can plug them into the .au3 script.
 
-```au3
+```AutoIt
 FileInstall("renowner", @TempDir & "\renowner", 1)
 FileInstall("palladize", @TempDir & "\palladize", 1)
 Global $o30ytu4gil = Execute('FileRead(FileOpen(@TempDir  & "\palladize"))')
@@ -97,11 +97,11 @@ Here's what `palladize` looks like with the bytes at the beginning removed:
 
 Looks like the decoded text is still in hex representation. We can convert them into actual hex values first and then open it up in IDA. The entry point would be at offset `0x23B0`.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/19dacb0a-9151-44ad-b3b3-3ce627c96722)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/7b001c2e-4cbc-4df7-a2a2-64e64801d10d)
 
 Right away, there is a reference to the other file `renower`, which was dropped in the Temp directory. A constant `AIAHL068594BNNETB8SPTXO` that looks like a key is also copied into `v9`, and passed into `sub22E0`. `sub22E0` just looks like a simple XOR decryption loop. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/c1bdde25-c9b7-494f-a01a-4263b4396c63)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/89cd4ac7-4d10-43cb-87b0-ce68545e7250)
 
 There are a bunch of API resolving routines before this, but we can just assume that the file `renowner` can be decrypted with the key. Sure enough, it’s another MZ file! DIE recognized it as a .NET file.
 
