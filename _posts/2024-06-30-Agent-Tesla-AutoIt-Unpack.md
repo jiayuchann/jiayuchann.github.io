@@ -97,11 +97,11 @@ Here's what `palladize` looks like with the bytes at the beginning removed:
 
 Looks like the decoded text is still in hex representation. We can convert them into actual hex values first and then open it up in IDA. The entry point would be at offset `0x23B0`.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/b9fc2503-09e2-46a7-bdf1-4572dd2f4e54)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0a40477b-d03e-47f0-9759-c05ebb286ba7)
 
 Right away, there is a reference to the other file `renower`, which was dropped in the Temp directory. A constant that looks like a key is also copied into `v9`, and passed into `sub22E0`. `sub22E0` just looks like a simple XOR decryption loop. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/1f3238a0-865c-48e2-a930-de9f3f5261e7)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/c1bdde25-c9b7-494f-a01a-4263b4396c63)
 
 There are a bunch of API resolving routines before this, but we can just assume that the file `renowner` can be decrypted with the key. Sure enough, it’s another MZ file! DIE recognized it as a .NET file.
 
