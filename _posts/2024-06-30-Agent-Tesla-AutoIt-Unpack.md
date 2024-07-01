@@ -125,7 +125,7 @@ The file contents are read into buffer `v14`, and passed into `sub_22E0` with a 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9a8b5f66-ba10-4989-8e4d-1b91249c32ef)
 
-We can try to decrypt the file with the key. Sure enough, another PE file! DIE recognized it as a .NET file.
+We can try to decrypt the file with the key. Sure enough, another PE file! DIE recognized it as a .NET executable.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/4fcc56d8-8e90-4656-8da6-3bd1fdc160bb)
 
