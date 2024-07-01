@@ -8,7 +8,7 @@ SHA256: afec7242f5c41610ecb994d22fc8243a58866ed6c4c11a1544cca10019fe0a07
 
 `DHL Arrival Notice.exe` looks like a compiled AutoIt script, as Detect-It-Easy suggested and mentions of it in IDA.
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0e9969d7-c123-4909-97c8-0c0005f572ff)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/818c3004-a1bf-41b7-9bf2-6ac2ec4b8e42)
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0441a4af-9d33-4739-b074-52c1136c7520)
 
