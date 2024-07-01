@@ -105,13 +105,13 @@ There is also an API resolving routine before this, let’s try to examine what 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0c8742c7-374e-42fa-8c7f-e32239430c03)
 
-Then, we can see some hashes being stored into a struct I labelled as `api_hashes`, and right after every hash, is where the actual function address of that hash is being stored in the struct. Luckily, hashdb recognizes the CRC checksums.
+Then, we can see some hashes being stored into a struct I labelled as `api_hashes`, and right after every hash, it points to an offset within another struct `api_addresses` which is where the actual function addresses are being stored. Luckily, hashdb recognizes the CRC checksums.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ef7396d4-49eb-4070-a76b-b9c178d1c70f)
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/63a3725c-dc43-455e-bf3e-715e1366ebc0)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ee9cfe77-f02c-4409-80a4-ff195baed7b7)
 
-As you can see in the for loop, `sub_3560` calculates and returns the function addresses for each hash, and the result is stored right after the hash in the same `api_hashes` struct. The resolved addresses are then copied into `v4` back in `sub_23B0`.
+As you can see in the for loop, `sub_3560` calculates and returns the function addresses for each hash, and the result is stored in the address pointed to by `api_hashes`, which is some offset in `api_addresses`. The resolved addresses are then copied into `v4` back in `sub_23B0`.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3540a72a-7678-4a6b-b193-71903a33108a)
 
