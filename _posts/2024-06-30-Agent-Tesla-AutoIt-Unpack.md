@@ -10,7 +10,7 @@ SHA256: afec7242f5c41610ecb994d22fc8243a58866ed6c4c11a1544cca10019fe0a07
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/90ec57f3-6580-4332-83a2-3136a1e20e7e)
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/0838e5ce-b119-47ed-bc5d-cc4cabafa74d)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9d1df7c5-1fdb-488b-b8e5-8179a0bfd5a8)
 
 [Exe2Aut](https://exe2aut.com/exe2aut-converter/) is able to decompile this back into a .au3 file for easier analysis. But the script still looks highly obfuscated, with 2655 lines of code.
 
