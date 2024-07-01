@@ -62,7 +62,7 @@ Anyways, this seems like a legitimate AutoIt3 interpreter based on VirusTotal re
 
 The memory region at `0xdb0000` seems promising. 
 
-After unmapping it in PE-bear, it looks like a .NET file, so opening it up in dnSpy, we are greeted with the final stage of the malware!
+After unmapping it in PE-bear, it looks like a .NET file, so opening it up in dnSpy, we are greeted with Redline Stealer!
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9805e5d4-3ac7-4cde-b8a3-5bf7591a0d9f)
 
