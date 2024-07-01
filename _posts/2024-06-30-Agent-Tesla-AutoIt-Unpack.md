@@ -107,6 +107,8 @@ There is also an API resolving routine before this, let’s try to examine what 
 
 Then, we can see some hashes being stored into a struct I labelled as `api_hashes`, and right after every hash, is where the actual function address of that hash is being stored in the struct. Luckily, hashdb recognizes the CRC checksums.
 
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ef7396d4-49eb-4070-a76b-b9c178d1c70f)
+
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/63a3725c-dc43-455e-bf3e-715e1366ebc0)
 
 As you can see in the for loop, `sub_3560` calculates and returns the function addresses for each hash, and the result is stored right after the hash in the same `api_hashes` struct. The resolved addresses are then copied into `v4` back in `sub_23B0`.
