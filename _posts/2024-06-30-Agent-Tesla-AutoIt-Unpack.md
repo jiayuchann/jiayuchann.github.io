@@ -123,7 +123,7 @@ The file contents are read into buffer `v14`, and passed into `sub_22E0` with a 
 
 `sub_22E0` just looks like a simple XOR decryption loop. 
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/4aae05b0-2642-4df3-824f-57d322772aa1)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/9a8b5f66-ba10-4989-8e4d-1b91249c32ef)
 
 We can try to decrypt the file with the key. Sure enough, another MZ file! DIE recognized it as a .NET file.
 
