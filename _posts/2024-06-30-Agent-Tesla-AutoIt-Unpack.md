@@ -1,4 +1,4 @@
-## Agent Tesla AutoIt Obfuscation
+## Agent Tesla AutoIt Deobfuscation
 
 Just a demo on how to unpack Agent Tesla AutoIt compiled executables.
 
