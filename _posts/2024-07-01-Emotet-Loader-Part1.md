@@ -58,7 +58,7 @@ There isn’t a lot of addresses that got resolved, but here, at offset 5 `0x77D
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/d28b6229-9c64-442f-8126-2ddf7ad5ed40)
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/3d5af8ee-cf1f-4ab5-8cea-3a5ecc96cf81)
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/cbadfc78-bbe9-4168-a135-9a86451695fe)
 
 In IDA, we can just rename the struct variables to the function names.
 
