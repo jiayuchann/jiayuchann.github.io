@@ -68,6 +68,8 @@ Repeat the same steps for `kernel32.dll` and other DLLs (but their DLL names are
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/65287cb2-0291-431f-a68d-14b27996c732)
 
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/df743b49-14b2-434c-8d5a-035c085163f5)
+
 Obviously, this is really tedious as you would have to repeat this for every loaded module. Pretty sure it can be scripted but I'll just move on for now.
 
 Looking at the string decryption routine in the function `decryption`:
