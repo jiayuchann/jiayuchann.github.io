@@ -126,7 +126,7 @@ There's quite a few string decryption calls:
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/1ed8ef2a-f2ef-497b-b998-bda61e15002a)
 
-And additional DLL names were also decrypted before calling LoadLibraryW on it, and later performing the API resolution like we've seen.
+And additional DLL names were also decrypted before calling LoadLibraryW on it, and later performing the API resolutions like we've seen in the beginning.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/400b1c9b-1426-4f2f-90b8-75fbece7a34c)
 
