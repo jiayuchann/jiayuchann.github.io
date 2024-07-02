@@ -54,7 +54,7 @@ In x32dbg, break on the call after `API_resolve_wrapper` and inspect the global 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/25f89b1d-46dd-488c-89fe-f596ace82d8b)
 
-There isn’t a lot of addresses that got resolved, but here, at offset 5 `77D28D0` is `ntdll.memcpy` and at offset 8 `77CDFF50` is `ntdll.RtlGetVersion`. 
+There isn’t a lot of addresses that got resolved, but here, at offset 5 `0x77D28D0` is `ntdll.memcpy` and at offset 8 `0x77CDFF50` is `ntdll.RtlGetVersion`. 
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/d28b6229-9c64-442f-8126-2ddf7ad5ed40)
 
@@ -68,15 +68,13 @@ Repeat the same steps for `kernel32.dll` and other DLLs (but their DLL names are
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/65287cb2-0291-431f-a68d-14b27996c732)
 
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/2daec4b5-cb59-4733-bb7c-507de1c3d695)
-
 Obviously, this is really tedious as you would have to repeat this for every loaded module. Pretty sure it can be scripted but I'll just move on for now.
 
 Looking at the string decryption routine in the function `decryption`:
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ecc70476-c24b-4bbc-8331-e29c4bb8356d)
 
-It takes in 2 parameters, a pointer to a block to decrypt, and a key. Looks like it allocates some memory XORing each DWORD with the key and storing them accordingly in `v5`. This can be pretty easily replicated in Python and just hardcoding the data and key used.
+It takes in 2 parameters, a pointer to a block to decrypt, and a key. Looks like it allocates some memory and `v5` points to the beginning of it, and then XORing each DWORD with the key and storing them accordingly in `v5`. This can be pretty easily replicated in Python and just hardcoding the data and key used.
 
 ```python
 def decrypt(to_decrypt, key):
@@ -128,7 +126,7 @@ There's quite a few string decryption calls:
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/1ed8ef2a-f2ef-497b-b998-bda61e15002a)
 
-And additional DLL names were also decrypted before calling LoadLibraryW on it, and doing the API resolution like we've seen.
+And additional DLL names were also decrypted before calling LoadLibraryW on it, and later performing the API resolution like we've seen.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/400b1c9b-1426-4f2f-90b8-75fbece7a34c)
 
