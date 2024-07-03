@@ -1,4 +1,4 @@
-## Emotet Loader Part 1
+## Emotet Part 1
 
 SHA256: 47dba610a04ef1d7f18a795108cf9e62d2d6e9e22f0fba51143462f4d569a70d
 
