@@ -46,10 +46,6 @@ For each of the results it is checked against the list of hashes, and if a match
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/d18c9e06-fb6e-4919-8783-73258a5ed9ea)
 
-We can create a struct for the `ntdll_APIs` global with size 209 * 4 (209 hashes, each resolved address is 4 bytes).
-
-![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/ada99ef1-ce9e-4bab-bdfe-e9ae50e3ec8a)
-
 In x32dbg, break on the call after `API_resolve_wrapper` and inspect the global array.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/25f89b1d-46dd-488c-89fe-f596ace82d8b)
@@ -60,7 +56,7 @@ There isn’t a lot of addresses that got resolved, but here, at offset 5 `0x77D
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/cbadfc78-bbe9-4168-a135-9a86451695fe)
 
-In IDA, we can just rename the struct variables to the function names.
+In IDA, We can create a struct for the `ntdll_APIs` global with size 209 * 4 (209 hashes, each resolved address is 4 bytes), and just rename the struct variables to the function names.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/553e854f-5377-40b9-b13a-cb0fb566e45e)
 
@@ -432,6 +428,6 @@ Address 00410B60: SOFTWARE\Microsoft\Windows\CurrentVersion\Runmb
 Address 00410DD0: "%s"_§&
 ```
 
-And we can see a list of additional DLLs that will be loaded: advapi32.dll, shell32.dll, crypt32.dll, urlmon.dll, userenv.dll, wininet.dll, wtsapi32.dll.
+And we can see a list of additional DLLs that will be loaded: advapi32.dll, shell32.dll, crypt32.dll, urlmon.dll, userenv.dll, wininet.dll, wtsapi32.dll. Some interesting strings, HTTP header stuff and registry keys.
 
 Anyways, just a quick guide on how to deobfuscate Emotet. Will try to analyze its functionality in part 2!
