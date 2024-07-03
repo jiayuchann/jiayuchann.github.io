@@ -432,4 +432,6 @@ Address 00410B60: SOFTWARE\Microsoft\Windows\CurrentVersion\Runmb
 Address 00410DD0: "%s"_§&
 ```
 
+And we can see a list of additional DLLs that will be loaded: advapi32.dll, shell32.dll, crypt32.dll, urlmon.dll, userenv.dll, wininet.dll, wtsapi32.dll.
+
 Anyways, just a quick guide on how to deobfuscate Emotet. Will try to analyze its functionality in part 2!
