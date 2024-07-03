@@ -66,7 +66,7 @@ Repeat the same steps for `kernel32.dll` and other DLLs (but their DLL names are
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/df743b49-14b2-434c-8d5a-035c085163f5)
 
-Obviously, this is really tedious, that you would have to repeat for every loaded module. But here’s how you can script it by hardcoding the XOR key and list of hashes (for ntdll.dll and kernel32.dll):
+Obviously, this is really tedious, that you would have to repeat for every loaded module. But here’s how you can script it by hardcoding the XOR key and list of hashes (for ntdll.dll and kernel32.dll), with a [symbol file](https://raw.githubusercontent.com/deepinstinct/DeMotet/master/scripts/symbols.json) containing modules and function names:
 
 ```python
 import json
