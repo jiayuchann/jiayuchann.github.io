@@ -434,7 +434,7 @@ In my case, the Emotet binary was copied into the %APPDATA% directory into `know
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/992b0369-72de-4f4b-a838-5b32995c77fb)
 
-And an example of contacting the C2 server looking at the arguments to `sub_40140A`, one of the server has an IP `187.188.166.192` and a path of `site/ringin/attrib`.
+And an example of contacting the C2 server looking at the arguments to `sub_40140A`, one of the server has an IP `187.188.166.192` and the host used a path `site/ringin/attrib`.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/6ea48834-7c85-4115-8e07-45afd4944449)
 
