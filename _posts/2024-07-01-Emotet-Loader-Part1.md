@@ -1,4 +1,4 @@
-## Emotet Part 1
+## Emotet Deobfuscation
 
 SHA256: 47dba610a04ef1d7f18a795108cf9e62d2d6e9e22f0fba51143462f4d569a70d
 
@@ -428,6 +428,14 @@ Address 00410B60: SOFTWARE\Microsoft\Windows\CurrentVersion\Runmb
 Address 00410DD0: "%s"_§&
 ```
 
-And we can see a list of additional DLLs that will be loaded: advapi32.dll, shell32.dll, crypt32.dll, urlmon.dll, userenv.dll, wininet.dll, wtsapi32.dll. Some interesting strings, HTTP header stuff and registry keys.
+And we can see a list of additional DLLs that will be loaded: advapi32.dll, shell32.dll, crypt32.dll, urlmon.dll, userenv.dll, wininet.dll, wtsapi32.dll. HTTP header stuff and registry keys. Some interesting wordlists where strings at `0x00410BB0` are used for file name generation (unique per machine based on the lpVolumeSerialNumber value) and strings at `0x410090` are used for C2 URI path generation. 
 
-Anyways, just a quick guide on how to deobfuscate Emotet. Will try to analyze its functionality in part 2!
+In my case, the Emotet binary was copied into the %APPDATA% directory into `knownpoller/knownpoller.exe` and executed. 
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/992b0369-72de-4f4b-a838-5b32995c77fb)
+
+And an example of contacting the C2 server looking at the arguments to `sub_40140A`, one of the server has an IP `187.188.166.192` and a path of `site/ringin/attrib`.
+
+![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/6ea48834-7c85-4115-8e07-45afd4944449)
+
+Anyways, just a quick guide on how to deobfuscate Emotet. Here's a [link](https://www.virusbulletin.com/uploads/pdf/magazine/2019/VB2019-Nagy.pdf) to an article for more in depth analysis on this specific variant! 
