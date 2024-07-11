@@ -1,10 +1,15 @@
 ## Emotet Deobfuscation
 
+##### [Dynamic Imports](#dynamicimports-1)
+##### [String Decryption](#stringdecryption-1)
+
 SHA256: 47dba610a04ef1d7f18a795108cf9e62d2d6e9e22f0fba51143462f4d569a70d
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/407ffbf4-d416-42f8-803e-4129d091f529)
 
-In part 1, I will be focusing on how the Dynamic Import Resolution works and also how to decrypt strings in Emotet's main binary. 
+In this walkthrough, I will be focusing on how the Dynamic Import Resolution works and also how to decrypt strings in Emotet's main binary. 
+
+## Dynamic Imports
 
 As you can see, the Import Address Table is pretty much empty, and Emotet loads the required libraries and functions during runtime.
 
@@ -156,6 +161,8 @@ process_json(key, unsigned_hashes, 'kernel32.dll')
 ```
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/6a133ece-6125-49f9-b9e4-28d34245895d)
+
+## String Decryption
 
 Moving on to the string decryption routine in the function `decryption`:
 
