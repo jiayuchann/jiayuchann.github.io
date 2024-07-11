@@ -4,9 +4,9 @@ SHA256: 47dba610a04ef1d7f18a795108cf9e62d2d6e9e22f0fba51143462f4d569a70d
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/407ffbf4-d416-42f8-803e-4129d091f529)
 
-In part 1, I will be focusing on how the Dynamic Import Resolution works and also how to decrypt strings in the Emotet Loader. 
+In part 1, I will be focusing on how the Dynamic Import Resolution works and also how to decrypt strings in Emotet's main binary. 
 
-As you can see, the IAT is pretty much empty, and Emotet loads the required libraries and functions during runtime.
+As you can see, the Import Address Table is pretty much empty, and Emotet loads the required libraries and functions during runtime.
 
 ![image](https://github.com/jiayuchann/jiayuchann.github.io/assets/58498244/e5162640-1c15-4dd2-b52e-ce417b47f39b)
 
