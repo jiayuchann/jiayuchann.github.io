@@ -1,7 +1,7 @@
 ## Emotet Deobfuscation
 
-##### [Dynamic Imports](#dynamicimports-1)
-##### [String Decryption](#stringdecryption-1)
+##### [Dynamic Imports](#dynamic-imports-1)
+##### [String Decryption](#string-decryption-1)
 
 SHA256: 47dba610a04ef1d7f18a795108cf9e62d2d6e9e22f0fba51143462f4d569a70d
 
