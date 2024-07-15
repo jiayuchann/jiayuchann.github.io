@@ -6,8 +6,8 @@
 ##### [Pseudorandom Name Generation](#pseudorandom-name-generation-1)
 ##### [C2 Communication and Data Exfiltration](#c2-communication-and-data-exfiltration-1)
 ##### [Cleanup](#cleanup-1)
-##### [Bypass C2 blockage](#bypass-c2-blockage)
-##### [Anti VM and Second Domain](#anti-vm-and-second-domain)
+##### [Bypass C2 blockage](#bypass-c2-blockage-1)
+##### [Anti VM and Second Domain](#anti-vm-and-second-domain-1)
 
 Another info stealer 🤔. Let’s see what’s up.
 
