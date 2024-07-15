@@ -153,18 +153,18 @@ Some legitimate DLLs are also downloaded and dropped into `C:\ProgramData\`, use
 
 Stealc also fingerprints the system by sending to the C2 server: 
 
-  •	HWID, GUID, MachineID
-  •	Path of the executable
-  •	Windows version
-  •	Computer name
-  •	Username
-  •	Antivirus products installed
-  •	Display resolution
-  •	Keyboard languages
-  •	Timezone
-  •	Hardware info (Processor information, Available cores, threads, and RAM)
-  •	Running processes
-  •	Installed software and their versions.
+- HWID, GUID, MachineID
+- Path of the executable
+- Windows version
+- Computer name
+- Username
+- Antivirus products installed
+- Display resolution
+- Keyboard languages
+- Timezone
+- Hardware info (Processor information, Available cores, threads, and RAM)
+- Running processes
+- Installed software and their versions.
 
 ![image](https://github.com/user-attachments/assets/3294c1b6-6de5-4a53-aa9c-31a07c5e347e)
 
@@ -174,10 +174,10 @@ Some artifacts are stored in `C:\ProgramData\<random_string>\` before being read
 
 While other file data were being sent directly through a POST request after contents were read, with a few forms:
 
-  •	token (for session tracking)
-  •	build_id (malware build)
-  •	file_name (base64-encoded relative path to stolen file)
-  •	file_data (base64-encoded file content)
+- token (for session tracking)
+- build_id (malware build)
+- file_name (base64-encoded relative path to stolen file)
+- file_data (base64-encoded file content)
 
 In this case, the file name is `Cookies\Google Chrome\Default.txt`:
 
@@ -215,15 +215,15 @@ If the malware was not executed in a VM, a PKZIP file (with base64 encoded name 
 
 In my run, for example, it consisted of the following files:
 
-  •	Autofill/Google Chrome_Default.txt
-  •	Autofill/Mozilla Firefox_tz3k441j.default-release.txt
-  •	Cookies/Google Chrome_Default.txt
-  •	Cookies/Microsoft Edge_Default.txt
-  •	Cookies/Mozilla Firefox_tz3k441j.default-release.txt
-  •	Downloads/Google Chrome_Default.txt
-  •	History/Microsoft Edge_Default.txt
-  •	History/Mozilla Firefox_ tz3k441j.default-release.txt
-  •	Soft/Steam/steam_tokens.txt
-  •	Information.txt (System fingerprint)
+- Autofill/Google Chrome_Default.txt
+- Autofill/Mozilla Firefox_tz3k441j.default-release.txt
+- Cookies/Google Chrome_Default.txt
+- Cookies/Microsoft Edge_Default.txt
+- Cookies/Mozilla Firefox_tz3k441j.default-release.txt
+- Downloads/Google Chrome_Default.txt
+- History/Microsoft Edge_Default.txt
+- History/Mozilla Firefox_ tz3k441j.default-release.txt
+- Soft/Steam/steam_tokens.txt
+- Information.txt (System fingerprint)
 
 Also depending on the config, Discord, Telegram, Outlook, Tox, or other data may be exfiltrated.
