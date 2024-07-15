@@ -11,11 +11,11 @@
 
 Another info stealer 🤔. Let’s see what’s up.
 
-![image](https://github.com/user-attachments/assets/eafcca05-4d81-444f-b90f-a44e217fb15a)
+![image](https://github.com/user-attachments/assets/8498aabc-0f43-44aa-9782-f3e489f0e3ca)
 
 MalwareBazaar categorizes this sample as Vidar, but it's more accurately Stealc, which derives from Vidar Stealer. This version appears either poorly written or potentially a low-effort modification of an older version, having some hardcoded configuration strings and easily extractable C2 IP addresses.
 
-![image](https://github.com/user-attachments/assets/3ed134c6-cee4-4349-b396-264fe2f28f99)
+![image](https://github.com/user-attachments/assets/65827169-b8af-4809-9a10-94c6377143ee)
 
 The sample was packed with UPX, so we can easily unpack it with UPX itself and open the unpacked file in IDA.
 
@@ -23,7 +23,7 @@ The sample was packed with UPX, so we can easily unpack it with UPX itself and o
 
 String decryption is a simple XOR decrypt by calling the function I named `decrypt` and passing in as arguments: the encrypted blob, an XOR key, and the length of the key. 
 
-![image](https://github.com/user-attachments/assets/6e2cb943-f2d5-4e08-a7d0-55a994c64c77)
+![image](https://github.com/user-attachments/assets/b4ae7208-708a-4f8c-8f5a-a26df6798c82)
 
 I developed an IDAPython script to automate the decryption of data chunks, adding decrypted content directly into IDA's disassembly and pseudocode views for ease of analysis. The script identifies calls to the decrypt function, extracts arguments, and replaces them with their decrypted counterparts.
 
@@ -91,49 +91,49 @@ if decrypt_func_ea != idc.BADADDR:
 
 Here’s what it looks like after running the script:
 
-![image](https://github.com/user-attachments/assets/e88846eb-6c92-42e3-b43b-7e24bf7e8aac)
+![image](https://github.com/user-attachments/assets/cd61c2e4-5dfa-434b-9b14-ca11edb65989)
 
 ## Dynamic Import Resolution
 
 After retrieving the base address of kernel32.dll by walking the PEB, it does some API resolution.
 
-![image](https://github.com/user-attachments/assets/612bc0a1-215c-46d7-b40c-e65a647a1c26)
+![image](https://github.com/user-attachments/assets/e100ec1d-54fc-4499-b7c8-38cf258fa4b5)
 
 Then it loads additional libraries and resolves APIs for them as well.
 
-![image](https://github.com/user-attachments/assets/215dd26a-292c-4785-a3e3-21e0b1e7baed)
+![image](https://github.com/user-attachments/assets/96aa3b0a-aefd-4c0e-ae47-993e02ccc7fe)
 
 ## Event Creation
 
 Stealc queries for the username of the currently running thread, prepends the name with `JohnDoe_`, and creates an event using the concatenated name. 
 
-![image](https://github.com/user-attachments/assets/ed7919e1-eb73-4f76-af7f-a00c39ddbf14)
+![image](https://github.com/user-attachments/assets/0f411a31-a786-40a9-93c2-47979b868992)
 
 ## Pseudorandom Name Generation
 
 Based on the current system time, it generates random letters/numbers and uses them to create unique directories and file names.
 
-![image](https://github.com/user-attachments/assets/468f2800-4a93-463f-83b4-d4c31906d69d)
+![image](https://github.com/user-attachments/assets/b37411d9-af99-48d4-bff1-3144427f9127)
 
 ## C2 Communication and Data Exfiltration
 
 The C2 IP address is grabbed and parsed from the username of a Steam profile. The current username reflects the most recent IP.
 
-![image](https://github.com/user-attachments/assets/d45ff28f-62e1-477b-ab3b-d230bce10ad5)
+![image](https://github.com/user-attachments/assets/00cd8f14-4bda-42dd-a2f6-08f34508d6ed)
 
-![image](https://github.com/user-attachments/assets/c20a9729-8be9-4b8b-843f-af1bb88417ab)
+![image](https://github.com/user-attachments/assets/7fc05eba-604e-4f9a-8f85-fc8eeecb409b)
 
 C2 beaconing: HTTP Headers when sending a POST request to `hxxp://65[.]109[.]241[.]221` contains the `hwid` which is the concatenation of the system’s VolumeSerialNumber and hardware profile GUID. Alongside a `build_id` value to represent the malware build identifier.
 
-![image](https://github.com/user-attachments/assets/ec33f51f-e5b0-4967-944f-7218477c500e)
+![image](https://github.com/user-attachments/assets/e4465d67-5fb8-4d5c-956a-223fcb81a5cc)
 
 Example of the initial C2 response, which includes a token to be used for all communications. 
 
-![image](https://github.com/user-attachments/assets/44204279-bf61-40d2-8eb3-66eb4ac2eacc)
+![image](https://github.com/user-attachments/assets/623196c6-444b-40c1-94c5-4c21b6124c3c)
 
 The first field of the response is also checked against the word “block”, if it matches, the process exits immediately.
 
-![image](https://github.com/user-attachments/assets/0454b523-57b0-49d8-8ab2-de805d34cd87)
+![image](https://github.com/user-attachments/assets/b4bb2aad-9d9e-4391-85db-2d5dd165afe5)
 
 It then attempts to retrieve the configuration for targeting files that match a specific pattern. Depending on the `mode` value set in the form of the request, the C2 responds with base64-encoded configurations targeting specific data. When `mode` is 1, the C2 responds with a base64-encoded configuration for browsers:
 
