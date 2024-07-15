@@ -207,6 +207,8 @@ There are 2 calls to an anti-VM check using `cpuid` with `eax` set to 1 before c
 
 ![image](https://github.com/user-attachments/assets/57f5b68b-624a-4ff9-8e39-1d893518dcbd)
 
+![image](https://github.com/user-attachments/assets/aced93be-e806-424b-b200-8bc8e71aaff3)
+
 To bypass this check, we can just flip the return value from the call `sub_40101E`.
 
 If the malware was not executed in a VM, a PKZIP file (with base64 encoded name `_DEBUG.zip`) consisting of exfiltrated files will be sent to a secondary domain `hxxp://tea[.]arpdabl[.]org`. 
