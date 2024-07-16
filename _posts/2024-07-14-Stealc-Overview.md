@@ -25,7 +25,7 @@ String decryption is a simple XOR decrypt by calling the function I named `decry
 
 ![image](https://github.com/user-attachments/assets/4650d7a4-2611-4d60-9c63-d925031b8a7c)
 
-I developed an IDAPython script to automate the decryption of data chunks, adding decrypted content directly into IDA's disassembly and pseudocode views for ease of analysis. The script identifies calls to the decrypt function, extracts arguments, and replaces them with their decrypted counterparts.
+I made an IDAPython script to automate the decryption of data chunks, adding decrypted content directly into IDA's disassembly and pseudocode views to make analysis easier. The script identifies each call to the decrypt function, extracts the arguments, and XORs the blob with the key.
 
 ```python
 import idaapi
