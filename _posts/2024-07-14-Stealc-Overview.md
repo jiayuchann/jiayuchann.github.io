@@ -189,7 +189,7 @@ In many other Stealc variants, it cleans up the `C:\ProgramData\` directory by r
 
 ![image](https://github.com/user-attachments/assets/b330adc6-195b-47c7-9c32-307cf3fa2c8f)
 
-However, this code was never invoked in my sample. This Stealc instance did not clean up after itself, leaving behind artifacts and downloaded DLLs in `C:\ProgramData\`. The malware terminates abruptly post-data exfiltration, driven by specific C2 commands (when response from C2 contains string "block". However, this behavior can be manipulated by patching some instructions to bypass the termination process.
+However, this code was never invoked in my sample. This Stealc instance did not clean up after itself, leaving behind artifacts and downloaded DLLs in `C:\ProgramData\`. The malware terminates abruptly post-data exfiltration, driven by specific C2 commands (when response from C2 contains string "block"). However, this behavior can be manipulated by patching some instructions to bypass the termination process.
 
 ![image](https://github.com/user-attachments/assets/03a7d453-4a28-4967-945c-48fc82df6686)
 
