@@ -1,1 +1,1 @@
-Just some security / coding writeups :)
+Just some security and coding writeups / notes :)
